@@ -56,11 +56,7 @@ const validateAllArrays = arr => {
 };
 
 const findInvalidCards = arrayOfCardsToCheck => {
-  const returnArray =[];
-  arrayOfCardsToCheck.forEach(cardArray => {
-    // make use of validateCred to check each nested array and add to the returnArray if required
-    if (!validateCred(cardArray)) returnArray.push(cardArray);
-  });
+  const returnArray = arrayOfCardsToCheck.filter(cardArray => validateCred(cardArray));
   return returnArray;
 };
 
@@ -91,7 +87,7 @@ const idInvalidCardCompanies = arrayOfInvalidCards => {
 
 //validateAllArrays();
 //console.log(findInvalidCards(batch));
-//console.log(idInvalidCardCompanies(findInvalidCards(batch)));
+console.log(idInvalidCardCompanies(findInvalidCards(batch)));
 
 
 
