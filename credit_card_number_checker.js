@@ -25,23 +25,23 @@ const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, inval
 
 // Add your functions below:
 // apply Luhn algorithm
-const validateCred = arr => {
+const validateCred = arrayToValidate => {
   // as length of array is being used a number of times, calculate it once here to save doing it over & over later
-  const arrayLength = arr.length;
+  const arrayLength = arrayToValidate.length;
   // put check digit in first as the temporary array is being declared and assigned anyway
-  const tempArray = [arr[arrayLength - 1]];
+  const tempArray = [arrayToValidate[arrayLength - 1]];
   // now add each of the numbers that will need to be summed into the temporary array (along with the check digit)
-  for (i = 1; i < arr.length; i++) {
+  for (i = 1; i < arrayToValidate.length; i++) {
     /* iterating with increment rather than decrement as it's easier to identify odd/even 
      * digits from the end of an unknown length of array this way
      */
     if (i % 2 !== 0) {
       // for odd numbers, counting from the end of the array, do the doubling and minusing bit
-      const numToAdd = arr[arrayLength - (1 + i)] * 2;
+      const numToAdd = arrayToValidate[arrayLength - (1 + i)] * 2;
       numToAdd <= 9 ? tempArray.push(numToAdd) : tempArray.push(numToAdd - 9);
     } else {
       // otherwise just add the digit without changing it
-      tempArray.push(arr[arrayLength - (1 + i)]);
+      tempArray.push(arrayToValidate[arrayLength - (1 + i)]);
     }
   }
   // finally, return T/F for if the sum of all the digits in the temporary array modulo 10 is zero
@@ -55,18 +55,18 @@ const validateAllArrays = arr => {
   });
 };
 
-const findInvalidCards = arr => {
+const findInvalidCards = arrayOfCardsToCheck => {
   const returnArray =[];
-  arr.forEach(innerArray => {
+  arrayOfCardsToCheck.forEach(cardArray => {
     // make use of validateCred to check each nested array and add to the returnArray if required
-    if (!validateCred(innerArray)) returnArray.push(innerArray);
+    if (!validateCred(cardArray)) returnArray.push(cardArray);
   });
   return returnArray;
 };
 
-const idInvalidCardCompanies = arr => {
+const idInvalidCardCompanies = arrayOfInvalidCards => {
   const returnArray =[];
-  arr.forEach(card => {
+  arrayOfInvalidCards.forEach(card => {
     // get 1st digit of each card and check with a switch statement
     switch (card[0]) {
       case 3:
