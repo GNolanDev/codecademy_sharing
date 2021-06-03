@@ -36,6 +36,28 @@ const pAequorFactory = (num, basesArray) => {
             if (['C', 'G'].includes(letter)) CandGcount++;
           });
           return (CandGcount / this.dna.length > 0.60);
+        },
+        complementStrand() {
+          const complementArray = this.dna.map(base => {
+            switch (base) {
+              case 'A':
+                return 'T';
+                break;
+              case 'T':
+                return 'A';
+                break;
+              case 'C':
+                return 'G';
+                break;
+              case 'G':
+                return 'C';
+                break;
+              default:
+                return 'A';
+                break;
+            }
+          });
+          return complementArray;
         }
     };
 };
@@ -58,7 +80,8 @@ const survivorArray = make30survivors();
 // test code
 //const newThingy1 = pAequorFactory(1, mockUpStrand());
 //const newThingy2 = pAequorFactory(2, mockUpStrand());
-//console.log(newThingy);
+//console.log(newThingy1);
+//console.log(newThingy1.complementStrand());
 //console.log(newThingy1.compareDNA(newThingy2));
 //console.log(newThingy1.willLikelySurvive());
 console.log(survivorArray);
