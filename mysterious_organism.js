@@ -18,7 +18,7 @@ const pAequorFactory = (num, basesArray) => {
         specimenNum: num,
         dna: basesArray,
         mutate() {
-            const randomIndex = Math.floor(Math.random() * 15);
+            const randomIndex = Math.floor(Math.random() * this.dna.length);
             const possibleNewBases = ['A', 'T', 'C', 'G'].filter(base => {
                 return base !== this.dna[randomIndex];
             });
