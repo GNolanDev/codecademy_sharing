@@ -55,10 +55,12 @@ const make30survivors = () => {
   return arrayOfSurvivors;
 };
 
-const newThingy1 = pAequorFactory(1, mockUpStrand());
-const newThingy2 = pAequorFactory(2, mockUpStrand());
+const survivorArray = make30survivors();
+
+// test code
+//const newThingy1 = pAequorFactory(1, mockUpStrand());
+//const newThingy2 = pAequorFactory(2, mockUpStrand());
 //console.log(newThingy);
 //console.log(newThingy1.compareDNA(newThingy2));
 //console.log(newThingy1.willLikelySurvive());
-const survivorArray = make30survivors();
-console.log(survivorArray);
+//console.log(survivorArray);
