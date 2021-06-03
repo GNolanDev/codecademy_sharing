@@ -19,9 +19,7 @@ const pAequorFactory = (num, basesArray) => {
         dna: basesArray,
         mutate() {
             const randomIndex = Math.floor(Math.random() * this.dna.length);
-            const possibleNewBases = ['A', 'T', 'C', 'G'].filter(base => {
-                return base !== this.dna[randomIndex];
-            });
+            const possibleNewBases = ['A', 'T', 'C', 'G'].filter(base => base !== this.dna[randomIndex]);
             this.dna[randomIndex] = possibleNewBases[Math.floor(Math.random() * 3)];
             return this.dna;
         },
@@ -63,4 +61,4 @@ const survivorArray = make30survivors();
 //console.log(newThingy);
 //console.log(newThingy1.compareDNA(newThingy2));
 //console.log(newThingy1.willLikelySurvive());
-//console.log(survivorArray);
+console.log(survivorArray);
