@@ -53,7 +53,7 @@ const pAequorFactory = (num, basesArray) => {
                 return 'C';
                 break;
               default:
-                return 'A';
+                return undefined;
                 break;
             }
           });
